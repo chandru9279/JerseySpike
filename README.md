@@ -6,6 +6,7 @@ Jersey based webservice with embedded jetty built by Maven
 Run
 
 > mvn dependecy:resolve
+
 > mvn package
 
 > java -jar target/notionalstock-services.war
