@@ -21,7 +21,6 @@ public class Main
         server.addConnector(connector);
 
         loadSettings();
-
         configureContext(server);
 
         server.start();
@@ -29,14 +28,16 @@ public class Main
     }
 
     private static void configureContext(Server server) {
+
+        WebAppContext webAppContext = new WebAppContext();
+
+        webAppContext.setContextPath("/");
+
         ProtectionDomain domain = Main.class.getProtectionDomain();
         URL location = domain.getCodeSource().getLocation();
-        WebAppContext webapp = new WebAppContext();
+        webAppContext.setWar(location.toExternalForm());
 
-        webapp.setContextPath("/");
-        webapp.setWar(location.toExternalForm());
-
-        server.setHandler(webapp);
+        server.setHandler(webAppContext);
     }
 
     private static void loadSettings() throws IOException {

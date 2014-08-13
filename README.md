@@ -17,6 +17,7 @@ Run
 > java -Dsettings="d:\Work\Repos\JerseySpike\notionalstock-services\settings.properties" -jar target/notionalstock-services.war
 
 will start the service in localhost:10000.
+Change the settings path according to local dev box/environment.
 Hit http://localhost:10000/webapi/openingstock to get sample response
 
 
