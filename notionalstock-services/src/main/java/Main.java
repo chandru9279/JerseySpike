@@ -16,15 +16,19 @@ public class Main
     public static void main(String[] args) throws Exception
     {
         Server server = new Server();
-        SelectChannelConnector connector = new SelectChannelConnector();
-        connector.setPort(10000);
-        server.addConnector(connector);
 
         loadSettings();
+        setupConnector(server);
         configureContext(server);
 
         server.start();
         server.join();
+    }
+
+    private static void setupConnector(Server server) {
+        SelectChannelConnector connector = new SelectChannelConnector();
+        connector.setPort(Integer.parseInt(System.getProperty("port")));
+        server.addConnector(connector);
     }
 
     private static void configureContext(Server server) {
